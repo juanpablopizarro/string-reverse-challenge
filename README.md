@@ -136,4 +136,41 @@ jobs:
 
 ```
 
+When you push to main the `.github/workflow/docker-build-test-deploy.yml` is pushed to the repository and it is configured to run just when you push a tag so we can execute the build and deploy with:
+
+```console
+$ git push origin main #pusing the code and github action
+$ git tag v1.0.1
+$ git push origin v1.0.1
+```
+That commands push the code, create a tag and push the tag to the remote. There github allocates a runner and run the github action that runs the steps to checkout the repo, read the metadata of it, login to docker hub, build and push the docker image to doker hub.
+
+Now you can see the image in docker hub:
+
+<img src="./assets/img/dockerhub.png" alt="coverage" style="height: 500px; width:500px;"/>
+
+You can pull it from anywhere using `docker pull jppizarro/string-reverse-challenge:latest`. If you run the image the container will return something similar to:
+
+```console
+❯ docker pull jppizarro/string-reverse-challenge:latest
+latest: Pulling from jppizarro/string-reverse-challenge
+699c8a97647f: Pull complete
+86cd158b89fd: Pull complete
+a226e961cfaa: Pull complete
+4cec535da207: Pull complete
+97a35d939ca4: Pull complete
+9a36b3922d7c: Pull complete
+1f6030244356: Pull complete
+12cab539a92d: Pull complete
+712844fc04a2: Pull complete
+33bd66f604e1: Pull complete
+775a9a8660af: Pull complete
+Digest: sha256:2beb55931ed30e31746957d748473cf3f9310ed63e0b07098c23d000cebe8d53
+Status: Downloaded newer image for jppizarro/string-reverse-challenge:latest
+docker.io/jppizarro/string-reverse-challenge:latest
+
+❯ docker run jppizarro/string-reverse-challenge
+time="2023-02-08T02:30:24Z" level=info msg="finished!"
+```
+
 
