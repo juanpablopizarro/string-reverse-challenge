@@ -147,7 +147,7 @@ That commands push the code, create a tag and push the tag to the remote. There 
 
 Now you can see the image in docker hub:
 
-<img src="./assets/img/dockerhub.png" alt="coverage" style="height: 500px; width:500px;"/>
+<img src="./assets/img/dockerhub.png" alt="coverage" style="height: 400px; width:600px;"/>
 
 You can pull it from anywhere using `docker pull jppizarro/string-reverse-challenge:latest`. If you run the image the container will return something similar to:
 
